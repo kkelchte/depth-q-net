@@ -67,7 +67,11 @@ CTR+D
 ### Get pretrained model
 
 ```
-$ wget 
+$ cd ~/depth_q_net/tensorflow/log
+$ wget https://homes.esat.kuleuven.be/~kkelchte/checkpoints/depth-q-net.zip
+$ unzip -p depth-q-net | tar -xf -
+$ cd depth-q-net 
+$ sed -i 's/\/tmp_dir/~\/depth_q_net\/tensorflow\/log\/depth-q-net/' checkpoint
 ```
 
 ### Run 
@@ -78,8 +82,9 @@ Start singularity again, source environment and off you go!
 $ singularity shell --nv kkelchte/ros_gazebo_tensorflow:latest
 $ source depth_q_net/entrypoint
 $ roscd simulation_supervised/python
-$ python run_script.py -pe sing -p eva_params.yaml -n 10 -e -w canyon --fsm nn_turtle_fsm -m ref -t ref_eva
+$ python run_script.py -pe sing -p eva_params.yaml -n 10 -g -e -w canyon --fsm nn_turtle_fsm -m depth-q-net -t depth-q-net_eva
 ```
+[Here](https://kkelchte.github.io/docs/2018-06-14_unit_tests_simulation_supervised.html) you can find more examples of how you can reconstruct the results in the paper.
 
 ### Contact
 
