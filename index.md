@@ -1,5 +1,5 @@
 ---
-title: Future Depth as Value Signal for Learning Collision Avoidance
+page: Future Depth as Value Signal for Learning Collision Avoidance
 description: klaas kelchtermans
 layout: default
 ---
